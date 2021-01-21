@@ -5,8 +5,6 @@ function App() {
 	const [ counter, setCounter ] = useState(0);
 	function incrementCounter() {
 		setCounter(counter + 1);
-		const myid = document.getElementById('xyz');
-		myid.style.display = 'none';
 	}
 
 	// Similar to componentDidMount and componentDidUpdate:
