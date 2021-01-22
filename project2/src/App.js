@@ -1,18 +1,31 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Link, useParams } from 'react-router-dom';
+import './App.css';
 
-function Account() {
+const Account = () => {
 	const { account } = useParams();
-	return <h3>ID : {account}</h3>;
-}
+	if (account !== 'home') {
+		return (
+			<React.Fragment>
+				<header className="site-header">{account}</header>
+				<main>This page belongs to ID : {account}. More details coming soon.</main>
+				<footer>{account} copyright</footer>
+			</React.Fragment>
+		);
+	} else if (account === 'home') {
+		return <div>Welcome to React Galaxy.</div>;
+	}
+};
 
 export default function App() {
 	return (
 		<Router>
 			<React.Fragment>
 				<h3>Accounts</h3>
-				<Link to="/">Home</Link>
 				<ul>
+					<li>
+						<Link to="/home">Home</Link>
+					</li>
 					<li>
 						<Link to="/netflix">Netflix</Link>
 					</li>
@@ -27,11 +40,15 @@ export default function App() {
 					</li>
 				</ul>
 			</React.Fragment>
-			<Route path="/" exact />
+			{/* <Route path="/" exact />
 			<Route path="/netflix">I am Netflix</Route>
 			<Route path="/zillow-group">I am Zillow Group</Route>
 			<Route path="/yahoo">I am Yahoo</Route>
-			<Route path="/modus-create">I am Modus Create</Route>
+			<Route path="/modus-create">I am Modus Create</Route> */}
+
+			<Route path="/:account">
+				<Account />
+			</Route>
 		</Router>
 	);
 }
