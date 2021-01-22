@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Link, useParams } from 'react-router-dom';
+import URLParametes from './Code/URL_Parameters';
 import './App.css';
 
 const Account = () => {
@@ -13,13 +14,14 @@ const Account = () => {
 			</React.Fragment>
 		);
 	} else if (account === 'home') {
-		return <div>Welcome to React Galaxy.</div>;
+		return <h3>HOME</h3>;
 	}
 };
 
 export default function App() {
 	return (
 		<Router>
+			<URLParametes />
 			<React.Fragment>
 				<h3>Accounts</h3>
 				<ul>
@@ -46,9 +48,9 @@ export default function App() {
 			<Route path="/yahoo">I am Yahoo</Route>
 			<Route path="/modus-create">I am Modus Create</Route> */}
 
-			<Route path="/:account">
+			{/* <Route path="/:account">
 				<Account />
-			</Route>
+			</Route> */}
 		</Router>
 	);
 }
